@@ -1,5 +1,5 @@
 ﻿
 namespace OnionArchitecture.Application.Dtos
 {
-    public record CategoryReturnDto(string Name);
+    public record CategoryReturnDto(int Id, string Name);
 }
