@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Core/">
+    <Project Path="OnionArchitecture.Application/OnionArchitecture.Application.csproj" />
+    <Project Path="OnionArchitecture.Domain/OnionArchitecture.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/Infrastructure/">
+    <Project Path="OnionArchitecture.Persistancee/OnionArchitecture.Persistancee.csproj" />
+  </Folder>
+  <Folder Name="/src/Presentation/">
+    <Project Path="OnionArchitecture/OnionArchitecture.csproj" Id="c331be9a-f605-4292-8b4b-40d579c7200e" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
