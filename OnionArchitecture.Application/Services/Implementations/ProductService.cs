@@ -31,11 +31,17 @@ namespace OnionArchitecture.Application.Services.Implementations
 
         public async Task<ApiResponse<ProductReturnDto>> CreateProductAsync(ProductCreateDto createDto)
         {
+            var existingProduct = await context.Products
+                .AnyAsync(p => p.Name == createDto.name);
+
+            if (existingProduct)
+                throw new ConflictException($"Product with name '{createDto.name}' already exists.");
+
             var category = await context.Categories.FindAsync(createDto.categoryid);
 
             if (category is null)
                 throw new NotFoundException(nameof(Category), createDto.categoryid);
-
+            
             var product = mapper.Map<Product>(createDto);
 
             await context.Products.AddAsync(product);
@@ -51,6 +57,12 @@ namespace OnionArchitecture.Application.Services.Implementations
 
             if (product is null)
                 throw new NotFoundException(nameof(Product), id);
+
+            var existingProduct = await context.Products
+                .AnyAsync(p => p.Name == updateDto.name && p.Id != id);
+
+            if (existingProduct)
+                throw new ConflictException($"Product with name '{updateDto.name}' already exists.");
 
             var category = await context.Categories.FindAsync(updateDto.categoryid);
 
