@@ -11,11 +11,10 @@ namespace OnionArchitecture.Application
         {
             public void AddApplicationServices()
             {
-                // AutoMapper
                 services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-                // Services
                 services.AddScoped<ICategoryService, CategoryService>();
+                services.AddScoped<IProductService, ProductService>();
             }
         }
     }
